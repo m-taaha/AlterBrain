@@ -1,6 +1,5 @@
 import {User} from "../model/User"
 import { Request, Response } from "express"
-import bcrypt from "bcryptjs";
 
 
 interface RegisterBody{
@@ -28,13 +27,10 @@ export const userRegister = async (req: Request<{}, {},  RegisterBody>, res: Res
                });
              }
 
-               const salt = await bcrypt.genSalt(10);
-               const hashedPassword = await bcrypt.hash(password, salt);
-
                const newUser = await User.create({
                 name,
                 email,
-                password: hashedPassword,
+                password
                });
                return res.status(201).json({
                  message: "User registered successfully",
