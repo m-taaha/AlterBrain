@@ -5,6 +5,7 @@ export interface IUser extends Document {
     name: string;
     email: string;
     password: string;
+    comparePassword(password: string): Promise<boolean>
 }
 
 
@@ -38,6 +39,11 @@ UserSchema.pre<IUser>('save', async function () {
   this.password = await bcrypt.hash(this.password, salt);
   
 })
+
+// comparing password
+UserSchema.methods.comparePassword= async function (enteredPassword : string): Promise<boolean> {
+  return await bcrypt.compare(enteredPassword, this.password)
+}
 
 
 export const User = mongoose.model<IUser>("User", UserSchema);

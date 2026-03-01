@@ -48,3 +48,19 @@ export const userRegister = async (req: Request<{}, {},  RegisterBody>, res: Res
         },)
     }
 }
+
+export const userLogin = async(req: Request<{}, {}, RegisterBody>, res: Response) => {
+  const {email, password} = req.body;
+
+  const user = await User.findOne({email})
+
+  if(!user) {
+    return res.status(401).json({
+      message: 'Invalid Credentials: User does not exist'
+    })
+  }
+
+  // check if password matches
+  const isMatch = await user.comparePassword(password);
+
+}
