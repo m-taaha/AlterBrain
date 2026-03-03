@@ -52,7 +52,7 @@ export const userRegister = async (req: Request<{}, {},  RegisterBody>, res: Res
 export const userLogin = async(req: Request<{}, {}, RegisterBody>, res: Response) => {
   const {email, password} = req.body;
 
-  const user = await User.findOne({email})
+  const user = await User.findOne({email}).select('+password') //mongoose will not return teh password by default. need to explicitly ask fo ti so comparePassword can work
 
   if(!user) {
     return res.status(401).json({
@@ -62,5 +62,9 @@ export const userLogin = async(req: Request<{}, {}, RegisterBody>, res: Response
 
   // check if password matches
   const isMatch = await user.comparePassword(password);
-
+  if(!isMatch){
+    return res.status(401).json({
+      message: 'Invalid credentials: Wrong Password'
+    })
+  }
 }

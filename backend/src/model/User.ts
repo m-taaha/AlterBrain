@@ -25,6 +25,7 @@ const UserSchema = new Schema<IUser>({
    password: {
       type: String,
       required: [true, 'Please enter your password'],
+      select: false // this prevents the password from being sent back in API response accidentally
    }
 },
 {timestamps: true}
