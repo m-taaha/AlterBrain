@@ -2,8 +2,8 @@ import {z} from 'zod';
 
 export const nameValidation = z
 .string()
-.min(2, "name must be of atleast 2 characters")
-.min(20, "name must be of atleast 20 characters");
+.min(2, "name must be of at least 2 characters")
+.max(20, "name must be of at most 20 characters");
 
 export const registerSchema = z.object({
     name: nameValidation,
