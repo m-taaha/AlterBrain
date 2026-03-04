@@ -2,29 +2,27 @@ import {User} from "../model/User"
 import { Request, Response } from "express"
 import { generateToken, JWTPayload } from "../utils/generateToken";
 import { loginSchema, LoginBody } from "../schemas/loginSchema";
+import { registerSchema, RegisterBody } from "../schemas/registerSchema";
 
-
-
-interface RegisterBody{
-  name: string;
-  email: string;
-  password: string;
-}
 
 
 
 export const userRegister = async (req: Request<{}, {},  RegisterBody>, res: Response) => {
-    const {name, email, password} = req.body;
-    if(!name || !email || !password) {
-        return res.status(400).json({
-            message: 'All fields are required'
-        })
-    }
-
- 
-    
     try{
+
+         const result = registerSchema.safeParse(req.body);
+
+         if (!result.success) {
+           return res.status(400).json({
+             message: "Invalid input",
+             errors: result.error.flatten().fieldErrors,
+           });
+         }
+
+         const { name, email, password } = result.data;
+
              const existUser = await User.findOne({ email });
+
              if (existUser) {
                return res.status(400).json({
                  message: "User already exist",
@@ -48,8 +46,9 @@ export const userRegister = async (req: Request<{}, {},  RegisterBody>, res: Res
 
     } catch (error) {
         return res.status(500).json({
-            message: 'Server Error'
-        },)
+          message: "Server Error",
+          error: error instanceof Error ? error.message : "Unknown error",
+        });
     }
 }
 
