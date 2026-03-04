@@ -114,3 +114,24 @@ export const userLogin = async(req: Request<{}, {}, LoginBody>, res: Response) =
     });
   }
 } 
+
+export const userLogut = async (req: Request, res: Response) => {
+  try {
+
+    res.clearCookie("UserToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    })
+
+    return res.status(200).json({
+      message: 'User logged out successfully',
+    });
+    
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Server Error',
+      error: error instanceof Error ? error.message : "Unknown error"
+    });
+  }
+}
