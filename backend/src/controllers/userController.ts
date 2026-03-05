@@ -115,7 +115,7 @@ export const userLogin = async(req: Request<{}, {}, LoginBody>, res: Response) =
   }
 } 
 
-export const userLogut = async (req: Request, res: Response) => {
+export const userLogout = async (req: Request, res: Response) => {
   try {
 
     res.clearCookie("UserToken", {
