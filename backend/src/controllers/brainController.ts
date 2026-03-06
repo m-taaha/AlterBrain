@@ -56,3 +56,33 @@ export const shareBrain = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getShareBrain = async (req: Request, res: Response) => {
+    try {
+
+        const hash = req.params.shareLink;
+
+        const link = await Link.findOne({hash});
+
+        if(!link) {
+            return res.status(404).json({
+                message: "Invalid share link",
+            });
+        }
+
+        const contents = await Content.find({
+            userId: link.userId,
+        });
+
+        return res.json({
+            contents,
+        });
+
+
+
+    } catch (error) {
+        return res.status(500).json({
+            message: "Server Error",
+        })
+    }
+}
