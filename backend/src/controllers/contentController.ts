@@ -34,4 +34,30 @@ export const createContent = async (req: Request, res: Response) => {
             message: "Server Error"
         })
     }
-}
+};
+
+export const getContenct = async (req: Request, res: Response) => {
+    try {
+
+        if(!req.user) {
+            return res.status(401).json({
+                message: "Unauthorized",
+            });
+        }
+
+        const contents = await Content.find({
+            userId: req.user._id
+        }).populate("userId", "name email");
+
+        return res.status(200).json({
+            message: "Content fetched successfully",
+            contents,
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: "Server Error",
+        })
+    }
+};
+
