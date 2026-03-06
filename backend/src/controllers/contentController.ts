@@ -35,7 +35,7 @@ export const createContent = async (req: Request, res: Response) => {
   }
 };
 
-export const getContenct = async (req: Request, res: Response) => {
+export const getContent = async (req: Request, res: Response) => {
   try {
     if (!req.user) {
       return res.status(401).json({

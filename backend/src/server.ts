@@ -3,6 +3,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db";
 import userRouter from "./routes/userRoutes";
+import contentRouter from "./routes/contentRoutes";
 
 configDotenv();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(cookieParser());
 
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/content", contentRouter);
 
 
 app.listen(PORT, () => {
