@@ -24,13 +24,22 @@ const ContentSchema = new Schema<IContent>({
 
     link: {
         type: String,
-        enum: Object.values(ContentType),
+        required: true,
+    },
+
+    type: {
+        type: String,
+        enum: {
+            values: Object.values(ContentType),
+            message: `{value} is not a supported content type`
+        },
         required: true,
     },
 
     tags: [
         {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Tag'
         },
     ],
 
