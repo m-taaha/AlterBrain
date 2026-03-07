@@ -7,6 +7,7 @@ export const createContent = async (req: Request, res: Response) => {
       return res.status(401).json({
         message: "Unauthorized",
       });
+    }
 
       const { title, link, type, tags } = req.body;
 
@@ -26,9 +27,11 @@ export const createContent = async (req: Request, res: Response) => {
 
       return res.status(201).json({
         message: "Content created successfuly",
+        content
       });
-    }
+    
   } catch (error) {
+    console.error(error);
     return res.status(500).json({
       message: "Server Error",
     });
@@ -45,7 +48,7 @@ export const getContent = async (req: Request, res: Response) => {
 
     const contents = await Content.find({
       userId: req.user._id,
-    }).populate("userId", "name email");
+    }).populate("userId", "name email"); //populate is for checking who owns the content
 
     return res.status(200).json({
       message: "Content fetched successfully",
@@ -82,7 +85,7 @@ export const deleteContent = async (req: Request, res: Response) => {
       });
     }
 
-    await Content.deleteOne({ _id: contentID });
+    await Content.findByIdAndDelete(contentID);
 
     return res.status(200).json({
       message: "Content deleted successfully",
