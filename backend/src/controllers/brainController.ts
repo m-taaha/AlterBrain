@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import CryptoJS from "crypto-js";
 import { Link } from "../model/Link";
 import { Content } from "../model/Content";
+import { User } from "../model/User";
 
 export const shareBrain = async (req: Request, res: Response) => {
     try {
@@ -40,9 +41,8 @@ export const shareBrain = async (req: Request, res: Response) => {
 
         } else {
 
-            await Link.deleteOne({
-                userId: req.user._id,
-            });
+            // turning off sharing by deleting the record
+            await Link.deleteOne({userId: req.user._id});
 
             return res.json({
                 message: "Sharing disabled",
@@ -60,7 +60,7 @@ export const shareBrain = async (req: Request, res: Response) => {
 export const getShareBrain = async (req: Request, res: Response) => {
     try {
 
-        const hash = req.params.shareLink;
+        const hash = req.params.shareLink as string;
 
         const link = await Link.findOne({hash});
 
@@ -70,11 +70,15 @@ export const getShareBrain = async (req: Request, res: Response) => {
             });
         }
 
+        // fetching the user details so teh public page can say "Welcome to [Name]'s Brain"
+        const user = await User.findById(link.userId).select('name email');
+
         const contents = await Content.find({
             userId: link.userId,
         });
 
         return res.json({
+            username: user?.name,
             contents,
         });
 
