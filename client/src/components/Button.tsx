@@ -30,7 +30,7 @@ function Button(props: ButtonProps) {
   return (
     <button className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
        {props.startIcon? 
-       <div className="pr-4">{props.startIcon}</div> : null} 
+       <div className="pr-2">{props.startIcon}</div> : null} 
        {props.text}
     </button> 
   )
