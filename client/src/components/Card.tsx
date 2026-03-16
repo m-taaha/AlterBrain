@@ -44,7 +44,7 @@ function Card({title, link, type}: CardProps) {
 
         {type === "twitter" && 
         <blockquote className="twitter-tweet">
-          <a href={link}></a>
+          <a href={link.replace("x.com", "twitter.com")}></a>
         </blockquote> 
         }
 
