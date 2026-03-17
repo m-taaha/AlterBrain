@@ -7,7 +7,7 @@ type Variants = "primary" | "secondary";
     size: "sm" | "md" | "lg";
     text: string;
     startIcon?: ReactElement;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 // global variable
@@ -28,7 +28,9 @@ const defaultStyles = "px-4 py-2 rounded-md flex justify-center items-center fon
 
 function Button(props: ButtonProps) {
   return (
-    <button className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
+    <button 
+    onClick={props.onClick}
+     className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
        {props.startIcon? 
        <div className="pr-2">{props.startIcon}</div> : null} 
        {props.text}
