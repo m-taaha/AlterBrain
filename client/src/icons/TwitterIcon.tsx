@@ -9,6 +9,7 @@ export const TwitterIcon = (props: IconProps) => {
         className={`${iconSizeVariants[props.size]}`}
         viewBox="0 0 16 16"
         id="Twitter-X--Streamline-Bootstrap"
+        stroke="currentColor"
       >
         <desc>Twitter X Streamline Icon: https://streamlinehq.com</desc>
         <path

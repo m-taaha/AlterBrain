@@ -17,10 +17,10 @@ const [modalOpen, setmodalOpen] = useState(false);
     <div className="flex">
 
       <Sidebar />
-      <div className="p-5 w-full bg-gray-100 border-2"> 
+      <div className="p-5 w-full bg-gray-200 "> 
         <CreateContentModal
           open={modalOpen}
-          onClose={() => {
+          onClose={() => { 
             setmodalOpen(false);
           }}
         />
