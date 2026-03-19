@@ -1,8 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
+import { toast } from "sonner";
+
 
 function Login() {
   const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    toast.success("Login Successful")
+  }
 
   return (
     <div className="min-h-screen bg-[#0b0c10] flex justify-center items-center relative overflow-hidden">
@@ -90,6 +96,7 @@ function Login() {
 
         {/* Submit */}
         <button
+          onClick={handleSubmit}
           className="w-full py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
           style={{
             background: "linear-gradient(135deg, #7164c0, #9492db)",

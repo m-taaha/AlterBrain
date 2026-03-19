@@ -92,7 +92,15 @@ function LandingPage() {
           <button className="px-6 py-3 rounded-xl text-sm font-semibold text-white bg-[#7164c0] hover:bg-[#8275d0] transition-all duration-200 shadow-xl shadow-[#7164c0]/30 hover:shadow-[#7164c0]/50 hover:-translate-y-0.5 active:translate-y-0">
             Start for Free →
           </button>
-          <button className="px-6 py-3 rounded-xl text-sm font-semibold text-white/60 hover:text-white border border-white/10 hover:border-white/25 transition-all duration-200">
+
+          <button
+            onClick={() => {
+              document
+                .getElementById("how-it-works")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="px-6 py-3 rounded-xl text-sm font-semibold text-white/60 hover:text-white border border-white/10 hover:border-white/25 transition-all duration-200"
+          >
             See how it works
           </button>
         </div>
@@ -274,6 +282,88 @@ function LandingPage() {
           ))}
         </div>
       </div>
+
+      <section id="how-it-works" className="relative z-10 py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          {/* Heading */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#7164c0]/40 bg-[#7164c0]/10 text-[#9492db] text-xs font-medium mb-6 tracking-wide uppercase">
+              How it works
+            </div>
+            <h2
+              className="text-4xl md:text-5xl font-black text-white tracking-tight"
+              style={{ letterSpacing: "-0.03em" }}
+            >
+              Your brain, organised.
+            </h2>
+            <p className="text-white/35 mt-4 max-w-md mx-auto text-base leading-relaxed">
+              Three simple steps to never lose a good idea again.
+            </p>
+          </div>
+
+          {/* Steps */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                step: "01",
+                icon: "🔗",
+                title: "Save anything",
+                desc: "Paste a tweet, YouTube link, article URL, or write a quick note. AlterBrain figures out the type automatically.",
+              },
+              {
+                step: "02",
+                icon: "✦",
+                title: "Auto-organised",
+                desc: "Content is sorted by type and tagged automatically. No folders, no friction — just save and forget.",
+              },
+              {
+                step: "03",
+                icon: "🧠",
+                title: "Access anywhere",
+                desc: "Your brain lives in the cloud. Pull it up on any device, share it with a link, or search it instantly.",
+              },
+            ].map((item) => (
+              <div
+                key={item.step}
+                className="relative rounded-2xl border border-white/[0.07] p-6 group hover:border-[#7164c0]/40 transition-all duration-200"
+                style={{ background: "rgba(255,255,255,0.02)" }}
+              >
+                {/* Step number */}
+                <div
+                  className="text-5xl font-black mb-4 select-none"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(113,100,192,0.3), rgba(113,100,192,0.05))",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  {item.step}
+                </div>
+
+                <div className="text-2xl mb-3">{item.icon}</div>
+
+                <h3 className="text-white font-bold text-lg mb-2 tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="text-white/35 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+
+                {/* Hover glow */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 50% 0%, rgba(113,100,192,0.08) 0%, transparent 70%)",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="relative z-10 mt-auto border-t border-white/[0.05] py-6 px-8">
