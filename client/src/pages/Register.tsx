@@ -20,10 +20,11 @@ function Register() {
         </div>
 
         
-        <div className=" flex justify-center mt-6 w-full">
+        <div className=" flex justify-center mt-3 w-full">
           <Button
             variant="primary"
-            size="md"
+            loading={false}
+            size="sm"
             text="Register"
           />
         </div>

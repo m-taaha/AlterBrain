@@ -8,6 +8,7 @@ type Variants = "primary" | "secondary";
     text: string;
     startIcon?: ReactElement;
     onClick?: () => void;
+    loading?: boolean;
 }
 
 // global variable
@@ -30,12 +31,15 @@ function Button(props: ButtonProps) {
   return (
     <button 
     onClick={props.onClick}
-     className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
+    disabled={props.loading}
+     className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]} ${props.loading ? "opacity-50 cursor-not-allowed" : ""}`}>
        {props.startIcon? 
        <div className="pr-2">{props.startIcon}</div> : null} 
-       {props.text}
+    
+
+       {props.loading? "Loading..." : props.text}
     </button> 
   )
-}
+}   
 
 export default Button; 
