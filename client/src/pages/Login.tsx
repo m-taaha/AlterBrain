@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import Input from "../components/Input";
 
-function Register() {
+function Login() {
   const navigate = useNavigate();
 
   return (
@@ -50,23 +51,15 @@ function Register() {
             className="text-2xl font-black text-white tracking-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Create account
+            Welcome back
           </h1>
-          <p className="text-white/35 text-sm mt-1">Join AlterBrain today 🚀</p>
+          <p className="text-white/35 text-sm mt-1">
+            Sign in to your AlterBrain
+          </p>
         </div>
 
         {/* Fields */}
-        <div className="flex flex-col gap-3 mb-6">
-          <div>
-            <label className="text-xs text-white/40 font-medium mb-1.5 block tracking-wide uppercase">
-              Name
-            </label>
-            <input
-              type="text"
-              placeholder="Your name"
-              className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white placeholder-white/20 text-sm outline-none focus:border-[#7164c0]/60 focus:bg-white/[0.07] transition-all duration-200"
-            />
-          </div>
+        <div className="flex flex-col gap-3 mb-5">
           <div>
             <label className="text-xs text-white/40 font-medium mb-1.5 block tracking-wide uppercase">
               Email
@@ -89,6 +82,12 @@ function Register() {
           </div>
         </div>
 
+        <div className="flex justify-end mb-6">
+          <span className="text-xs text-[#9492db] hover:text-white cursor-pointer transition-colors">
+            Forgot password?
+          </span>
+        </div>
+
         {/* Submit */}
         <button
           className="w-full py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
@@ -97,16 +96,16 @@ function Register() {
             boxShadow: "0 8px 32px rgba(113,100,192,0.35)",
           }}
         >
-          Create account →
+          Sign in →
         </button>
 
         <p className="text-center text-sm text-white/30 mt-5">
-          Already have an account?{" "}
+          Don't have an account?{" "}
           <span
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/register")}
             className="text-[#9492db] hover:text-white cursor-pointer transition-colors"
           >
-            Login
+            Register
           </span>
         </p>
       </div>
@@ -114,4 +113,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;

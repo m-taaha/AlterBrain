@@ -4,8 +4,8 @@ import CreateContentModal from "../components/CreateContentModal";
 import { PlusIcon } from "../icons/PlusIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 import { LogoIcon } from "../icons/LogoIcon";
-import { TwitterIcon } from "../icons/TwitterIcon";
-import { YoutubeIcon } from "../icons/YoutubeIcon";
+// import { TwitterIcon } from "../icons/TwitterIcon";
+// import { YoutubeIcon } from "../icons/YoutubeIcon";
 
 function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
