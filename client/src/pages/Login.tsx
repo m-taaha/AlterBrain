@@ -1,9 +1,35 @@
-
+import Button from "../components/Button";
+import Input from "../components/Input";
 
 function Login() {
   return (
-    <div>Login</div>
-  )
+    <div className="h-screen w-screen bg-gray-100 flex justify-center items-center">
+      <div className="bg-white rounded-xl shadow-md w-[360px] p-8">
+        <div className="mb-6 text-center">
+          <h1 className="text-2xl font-semibold text-gray-800">Welcome Back</h1>
+          <p className="text-sm text-gray-500 mt-1">
+            Login to your AlterBrain account
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <Input placeholder="Email" />
+          <Input placeholder="Password" />
+        </div>
+
+        <div className="flex justify-center mt-4 w-full">
+          <Button variant="primary" loading={false} size="sm" text="Login" />
+        </div>
+
+        <div className="mt-4 text-center text-sm text-gray-500">
+          Don’t have an account?{" "}
+          <span className="text-purple-600 cursor-pointer hover:underline">
+            Register
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Login
+export default Login;
