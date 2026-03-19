@@ -1,22 +1,21 @@
-import type { ChangeEvent} from "react";
+import type { RefObject } from "react";
 
 interface InputProps {
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    placeholder?: string;
+  inputRef?: RefObject<HTMLInputElement>;
+  placeholder?: string;
 }
 
-
-function Input({onChange, placeholder}: InputProps) {
+function Input({ inputRef, placeholder }: InputProps) {
   return (
     <div>
       <input
         placeholder={placeholder}
         type="text"
         className=" w-full  px-4 py-2 border rounded-lg m-2"
-        onChange={onChange}
+        ref={inputRef}
       />
     </div>
   );
 }
 
-export default Input
+export default Input;
