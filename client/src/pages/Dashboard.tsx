@@ -174,18 +174,29 @@ function Dashboard() {
             ))}
           </div>
 
-          {/* Cards grid */}
-          <div className="flex flex-wrap gap-5">
-            <Card
-              type="twitter"
-              link="https://x.com/nirudhuuu/status/2032854953296007609/photo/1"
-              title="First Tweet"
-            />
-            <Card
-              type="youtube"
-              link="https://www.youtube.com/watch?v=Ades3pQbeh8&t=4s"
-              title="First Vid"
-            />
+          {/* Cards grid - Masonary */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5 space-y-5">
+            <div className="break-inside-avoid">
+              <Card
+                type="twitter"
+                link="https://x.com/nirudhuuu/status/2032854953296007609/photo/1"
+                title="First Tweet"
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Card
+                type="youtube"
+                link="https://www.youtube.com/watch?v=Ades3pQbeh8&t=4s"
+                title="First Vid"
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Card
+                type="youtube"
+                link="https://www.youtube.com/watch?v=P1yJcMV8o90"
+                title="Clade Mastery"
+              />
+            </div>
           </div>
         </div>
       </main>

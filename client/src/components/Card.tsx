@@ -7,7 +7,7 @@ interface CardProps {
 function Card({ title, link, type }: CardProps) {
   return (
     <div
-      className="w-72 rounded-2xl border border-white/[0.07] overflow-hidden group hover:border-[#7164c0]/40 transition-all duration-200"
+      className="w-full rounded-2xl border border-white/[0.07] overflow-hidden group hover:border-[#7164c0]/40 transition-all duration-200"
       style={{
         background:
           "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)",

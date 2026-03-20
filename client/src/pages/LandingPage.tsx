@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { LogoIcon } from "../icons/LogoIcon";
 
 function LandingPage() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-[#0b0c10] flex flex-col overflow-x-hidden">
       {/* Animated background grid */}
@@ -45,10 +47,21 @@ function LandingPage() {
         </div>
 
         <div className="flex gap-3">
-          <button className="px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white border border-white/10 hover:border-white/20 transition-all duration-200">
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+            className="px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white border border-white/10 hover:border-white/20 transition-all duration-200"
+          >
             Login
           </button>
-          <button className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-[#7164c0] hover:bg-[#8275d0] transition-all duration-200 shadow-lg shadow-[#7164c0]/25">
+
+          <button
+            onClick={() => {
+              navigate("/register");
+            }}
+            className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-[#7164c0] hover:bg-[#8275d0] transition-all duration-200 shadow-lg shadow-[#7164c0]/25"
+          >
             Get Started
           </button>
         </div>
@@ -89,7 +102,12 @@ function LandingPage() {
 
         {/* CTAs */}
         <div className="flex flex-wrap gap-3 justify-center mb-20">
-          <button className="px-6 py-3 rounded-xl text-sm font-semibold text-white bg-[#7164c0] hover:bg-[#8275d0] transition-all duration-200 shadow-xl shadow-[#7164c0]/30 hover:shadow-[#7164c0]/50 hover:-translate-y-0.5 active:translate-y-0">
+          <button
+            onClick={() => {
+              navigate("/register");
+            }}
+            className="px-6 py-3 rounded-xl text-sm font-semibold text-white bg-[#7164c0] hover:bg-[#8275d0] transition-all duration-200 shadow-xl shadow-[#7164c0]/30 hover:shadow-[#7164c0]/50 hover:-translate-y-0.5 active:translate-y-0"
+          >
             Start for Free →
           </button>
 
